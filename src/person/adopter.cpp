@@ -1,8 +1,16 @@
 #include "adopter.h"
+#include <sstream>
 
 Adopter::Adopter(string name, uint8_t age)
 : Person(name, age) {
     
+}
+
+Adopter::~Adopter() {
+    // Delete adopted animals
+    for (Animal *i : this->adopted_animals) {
+        delete i;
+    }
 }
 
 const vector<Animal*> Adopter::get_adopted_animals() const {
@@ -11,4 +19,15 @@ const vector<Animal*> Adopter::get_adopted_animals() const {
 
 void Adopter::adopt_animal(Animal *animal) {
     this->adopted_animals.push_back(animal);
+}
+
+string Adopter::to_string() const {
+    std::stringstream ss;
+    ss << "ADOPTER\n";
+    ss << "Name: " << this->get_name() << '\n';
+    ss << "Age: " << this->get_age();
+    for (Animal *i : this->get_adopted_animals()) {
+        ss << '\n' << i->to_string();
+    }
+    return ss.str();
 }

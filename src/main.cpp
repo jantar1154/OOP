@@ -6,13 +6,51 @@ using std::endl;
 
 int main() {
     Shelter *sh01 = new Shelter("Utulek super 3000+");
-    Admin *k = sh01->add_admin("Karel Adminak", 22, 0xA00001);
-    Employee *p = k->add_employee("Pablo", 65, 0xE00001);
+    Admin *k = sh01->add_admin("Karel Adminak", 0x16, 0xA00001);
+    k->add_employee("Pablo", 0x40, 0xE00001);
 
-    cout << k->to_string() << endl;
+    cout << endl;
 
-    cout << p->to_string() << endl;
+    // Print admins
+    for (Admin *const i : sh01->get_admins()) {
+        cout << i->to_string() << endl;
+    }
+    cout << endl;
 
+    // Print employees
+    for (Employee *const i : sh01->get_employees()) {
+        cout << i->to_string() << endl;
+    }
+    cout << endl;
+
+
+    // Add animals
+    k->add_animal("Miluna", 0x03);
+    k->add_animal("Archie", 0x06);
+
+    // Print animals
+    for (Animal *i : sh01->get_animals()) {
+        cout << i->to_string() << endl;
+    }
+    cout << endl;
+
+    Animal *adopt_dog = sh01->get_animals().at(1);
+
+    // Adopt some animals
+    Adopter *adp = new Adopter("Jakub", 0x1A);
+    k->adopt_animal(adopt_dog, adp);
+    cout << adopt_dog->get_name() << " adopted !" << endl;
+
+    // Print animals again
+    for (Animal *i : sh01->get_animals()) {
+        cout << i->to_string() << endl;
+    }
+    cout << endl;
+
+    // Print adopter's adopted animals
+    cout << adp->to_string() << endl;
+
+    delete adp;
     delete sh01;
     return 0;
 }

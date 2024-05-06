@@ -9,12 +9,16 @@ using std::vector;
 
 class Adopter : public Person {
 private:
+    friend class Admin;
     vector<Animal*> adopted_animals;
+    void adopt_animal(Animal *animal);
 
 public:
     Adopter(string name, uint8_t age);
+    ~Adopter();
     const vector<Animal*> get_adopted_animals() const;
-    void adopt_animal(Animal *animal);
+
+    string to_string() const;
 };
 
 #endif // H_ADOPTER

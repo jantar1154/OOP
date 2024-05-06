@@ -18,6 +18,11 @@ public:
     Employee* add_employee(Employee* employee);
     Employee* add_employee(string name, uint8_t age, size_t employee_id);
 
+    Animal *add_animal(Animal *animal);
+    Animal *add_animal(string name, uint8_t age);
+
+    void adopt_animal(Animal *animal, Adopter *adopter);
+
     string to_string() const;
 };
 

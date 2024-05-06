@@ -22,6 +22,21 @@ Employee* Admin::add_employee(string name, uint8_t age, size_t employee_id) {
     return employee;
 }
 
+Animal *Admin::add_animal(Animal *animal) {
+    shelter->add_animal(animal);
+    return animal;
+}
+
+Animal *Admin::add_animal(string name, uint8_t age) {
+    Animal *animal = shelter->add_animal(name, age);
+    return animal;
+}
+
+void Admin::adopt_animal(Animal *animal, Adopter *adopter) {
+    adopter->adopt_animal(animal);
+    this->shelter->remove_animal(animal);
+}
+
 string Admin::to_string() const {
     std::stringstream ss;
     ss << "ADMIN\n";

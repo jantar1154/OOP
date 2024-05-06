@@ -21,18 +21,21 @@ private:
 
     void adopt_animal(Adopter *adopter, Animal *animal);
 
-    void add_animal(Animal *const animal);
-    void add_animal(string name, uint8_t age);
+    Animal *add_animal(Animal *const animal);
+    Animal *add_animal(string name, uint8_t age);
+
+    void remove_animal(Animal *animal);
 
 public:
     Shelter(string name);
     ~Shelter();
 
-    const vector<Animal*> get_animals() const;
+    vector<Animal*> get_animals();
 
     Admin* add_admin(string name, uint8_t age, size_t employee_id);
 
     const vector<Admin*> get_admins() const;
+    const vector<Employee*> get_employees() const;
 };
 
 #endif //H_SHELTER
