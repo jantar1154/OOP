@@ -25,9 +25,9 @@ string Adopter::to_string() const {
     std::stringstream ss;
     ss << "ADOPTER\n";
     ss << "Name: " << this->get_name() << '\n';
-    ss << "Age: " << this->get_age();
-    for (Animal *i : this->get_adopted_animals()) {
+    ss << "Age: " << this->get_age() << '\n';
+    ss << "Adopted animals: " << this->get_adopted_animals().size();
+    for (Animal *i : this->get_adopted_animals())
         ss << '\n' << i->to_string();
-    }
     return ss.str();
 }

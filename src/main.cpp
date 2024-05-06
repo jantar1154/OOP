@@ -36,12 +36,12 @@ int main() {
 
     Animal *adopt_dog = sh01->get_animals().at(1);
 
-    // Adopt some animals
+    // Adopt animal
     Adopter *adp = new Adopter("Jakub", 0x1A);
     k->adopt_animal(adopt_dog, adp);
     cout << adopt_dog->get_name() << " adopted !" << endl;
 
-    // Print animals again
+    // Print shelter animals again
     for (Animal *i : sh01->get_animals()) {
         cout << i->to_string() << endl;
     }
