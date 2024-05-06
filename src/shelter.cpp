@@ -5,8 +5,9 @@ Shelter::Shelter(string name) {
 }
 
 Shelter::~Shelter() {
-    for (Animal* i : this->animals)
-        delete i;
+    for (Animal* i : this->animals) delete i;
+    for (Admin* i : this->admins) delete i;
+    for (Employee* i : this->employees) delete i;
 }
 
 void Shelter::add_animal(Animal *const animal) {
@@ -22,11 +23,12 @@ const vector<Animal*> Shelter::get_animals() const {
     return this->animals;
 }
 
-void Shelter::add_admin(Admin *admin) {
-    this->admins.push_back(admin);
+Admin* Shelter::add_admin(string name, uint8_t age, size_t employee_id) {
+    Admin *a = new Admin(name, age, employee_id, this);
+    this->admins.push_back(a);
+    return a;
 }
 
-void Shelter::add_admin(string name, uint8_t age, size_t employee_id) {
-    Admin *a = new Admin(name, age, employee_id, this);
-    add_admin(a);
+const vector<Admin*> Shelter::get_admins() const {
+    return this->admins;
 }

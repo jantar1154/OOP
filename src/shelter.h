@@ -30,8 +30,9 @@ public:
 
     const vector<Animal*> get_animals() const;
 
-    void add_admin(Admin* admin);
-    void add_admin(string name, uint8_t age, size_t employee_id);
+    Admin* add_admin(string name, uint8_t age, size_t employee_id);
+
+    const vector<Admin*> get_admins() const;
 };
 
 #endif //H_SHELTER

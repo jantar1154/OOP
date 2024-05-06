@@ -13,9 +13,12 @@ private:
 
 public:
     Admin(string name, uint8_t age, size_t employee_id, Shelter *shelter);
+    size_t get_employee_id() const;
 
-    void add_employee(Employee* employee);
-    void add_employee(string name, uint8_t age, size_t employee_id);
+    Employee* add_employee(Employee* employee);
+    Employee* add_employee(string name, uint8_t age, size_t employee_id);
+
+    string to_string() const;
 };
 
 #endif // H_ADNIN

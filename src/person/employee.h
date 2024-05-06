@@ -15,8 +15,13 @@ private:
 
 public:
     Employee(string name, uint8_t age, size_t employee_id);
+    size_t get_employee_id() const;
+
     void add_animal(Animal* animal);
+
     const vector<Animal*> get_animals() const;
+
+    string to_string() const;
 };
 
 #endif // H_EMPLOYEE
