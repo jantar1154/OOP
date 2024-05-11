@@ -13,23 +13,25 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +4 src/main.cpp
-badd +10 src/shelter.h
-badd +30 src/shelter.cpp
-badd +17 src/animal.h
-badd +13 src/animal.cpp
+badd +44 src/main.cpp
+badd +27 src/shelter.h
+badd +28 src/shelter.cpp
+badd +18 src/animal.h
+badd +21 src/animal.cpp
 badd +17 src/person/person.h
 badd +13 src/person/person.cpp
-badd +17 src/person/adopter.h
-badd +13 src/person/adopter.cpp
+badd +21 src/person/adopter.h
+badd +28 src/person/adopter.cpp
 badd +13 src/person/employee.cpp
 badd +19 src/person/employee.h
-badd +7 src/person/admin.h
-badd +16 src/person/admin.cpp
+badd +24 src/person/admin.h
+badd +38 src/person/admin.cpp
 argglobal
 %argdel
 $argadd src/main.cpp
 set stal=2
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
@@ -53,12 +55,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 4 - ((3 * winheight(0) + 17) / 34)
+let s:l = 42 - ((19 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 4
-normal! 0
+keepjumps 42
+normal! 014|
 tabnext
 edit src/shelter.h
 argglobal
@@ -73,12 +75,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 17) / 34)
+let s:l = 25 - ((19 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
-normal! 0
+keepjumps 25
+normal! 039|
 tabnext
 edit src/shelter.cpp
 argglobal
@@ -93,12 +95,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 30 - ((29 * winheight(0) + 17) / 34)
+let s:l = 28 - ((27 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 30
-normal! 050|
+keepjumps 28
+normal! 034|
 tabnext
 edit src/animal.h
 argglobal
@@ -112,12 +114,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 3 - ((2 * winheight(0) + 17) / 34)
+let s:l = 18 - ((17 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 3
-normal! 0
+keepjumps 18
+normal! 022|
 tabnext
 edit src/animal.cpp
 argglobal
@@ -131,12 +133,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 13 - ((12 * winheight(0) + 17) / 34)
+let s:l = 21 - ((20 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 13
-normal! 021|
+keepjumps 21
+normal! 018|
 tabnext
 edit src/person/person.h
 argglobal
@@ -175,7 +177,7 @@ if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 12
-normal! 021|
+normal! 0
 tabnext
 edit src/person/employee.h
 argglobal
@@ -228,16 +230,15 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 17 - ((16 * winheight(0) + 17) / 34)
+let s:l = 22 - ((21 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 17
-normal! 014|
+keepjumps 22
+normal! 029|
 tabnext
 edit src/person/admin.cpp
 argglobal
-balt src/person/admin.h
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -248,13 +249,51 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 16 - ((15 * winheight(0) + 17) / 34)
+let s:l = 47 - ((33 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 16
-normal! 027|
-tabnext 10
+keepjumps 47
+normal! 0
+tabnext
+edit src/person/adopter.h
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 19 - ((18 * winheight(0) + 17) / 34)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 19
+normal! 023|
+tabnext
+edit src/person/adopter.cpp
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 6 - ((5 * winheight(0) + 17) / 34)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 6
+normal! 04|
+tabnext 1
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

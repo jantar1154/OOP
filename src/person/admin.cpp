@@ -6,6 +6,7 @@ Admin::Admin(string name, uint8_t age, size_t employee_id, Shelter *shelter)
     this->employee_id = employee_id;
     this->shelter = shelter;
 }
+Admin::~Admin() {}
 
 size_t Admin::get_employee_id() const {
     return this->employee_id;

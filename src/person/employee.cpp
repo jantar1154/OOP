@@ -6,6 +6,8 @@ Employee::Employee(string name, uint8_t age, size_t employee_id)
     this->employee_id = employee_id;
 }
 
+Employee::~Employee() {}
+
 size_t Employee::get_employee_id() const {
     return this->employee_id;
 }

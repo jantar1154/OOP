@@ -13,6 +13,7 @@ private:
 
 public:
     Admin(string name, uint8_t age, size_t employee_id, Shelter *shelter);
+    virtual ~Admin();
     size_t get_employee_id() const;
 
     Employee* add_employee(Employee* employee);

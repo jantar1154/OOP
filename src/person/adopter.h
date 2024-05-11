@@ -15,7 +15,7 @@ private:
 
 public:
     Adopter(string name, uint8_t age);
-    ~Adopter();
+    virtual ~Adopter();
     const vector<Animal*> get_adopted_animals() const;
 
     string to_string() const;

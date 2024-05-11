@@ -15,6 +15,7 @@ private:
 
 public:
     Employee(string name, uint8_t age, size_t employee_id);
+    virtual ~Employee();
     size_t get_employee_id() const;
 
     void add_animal(Animal* animal);

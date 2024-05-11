@@ -13,10 +13,11 @@ private:
 
 public:
     Person(string name, uint8_t age);
-    string get_name() const;
-    uint8_t get_age() const;
 
-    string to_string() const;
+    virtual string get_name() const;
+    virtual uint8_t get_age() const;
+
+    virtual string to_string() const;
 };
 
 #endif // H_PERSON
