@@ -1,7 +1,7 @@
 #include "inventory_item.h"
 #include <sstream>
 
-InventoryItem::InventoryItem(string name, float price, int amount) {
+InventoryItem::InventoryItem(string name, float price, uint32_t amount) {
     this->name = name;
     this->price = price;
     this->amount = amount;
@@ -15,7 +15,7 @@ float InventoryItem::get_price() const {
     return this->price;
 }
 
-int InventoryItem::get_amount() const {
+uint32_t InventoryItem::get_amount() const {
     return this->amount;
 }
 
