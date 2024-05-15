@@ -2,13 +2,14 @@
 
 Shelter::Shelter(string name) {
     this->name = name;
+    this->inventory = new Inventory;
 }
 
 Shelter::~Shelter() {
     for (Animal* i : this->animals) delete i;
     for (Admin* i : this->admins) delete i;
     for (Employee* i : this->employees) delete i;
-    for (InventoryItem* i : this->inventory) delete i;
+    delete inventory;
 }
 
 Animal* Shelter::add_animal(Animal *const animal) {
@@ -50,16 +51,16 @@ const vector<Employee*> Shelter::get_employees() const {
 }
 
 InventoryItem* Shelter::add_to_inventory(InventoryItem *item) {
-    this->inventory.push_back(item);
+    this->inventory->add_item(item);
     return item;
 }
 
-InventoryItem* Shelter::add_to_inventory(string name, float price) {
-    InventoryItem *item = new InventoryItem(name, price);
+InventoryItem* Shelter::add_to_inventory(string name, float price, int amount) {
+    InventoryItem *item = new InventoryItem(name, price, amount);
     add_to_inventory(item);
     return item;
 }
 
-const vector<InventoryItem*> Shelter::get_inventory() const {
+const Inventory* Shelter::get_inventory() const {
     return this->inventory;
 }

@@ -15,10 +15,12 @@ private:
 
 public:
     Adopter(string name, uint8_t age);
-    virtual ~Adopter();
+    ~Adopter();
+    string get_name() const override;
+    uint8_t get_age() const override;
     const vector<Animal*> get_adopted_animals() const;
 
-    string to_string() const;
+    string to_string() const override;
 };
 
 #endif // H_ADOPTER

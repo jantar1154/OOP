@@ -13,28 +13,33 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +44 src/main.cpp
-badd +27 src/shelter.h
-badd +28 src/shelter.cpp
-badd +18 src/animal.h
-badd +21 src/animal.cpp
-badd +17 src/person/person.h
-badd +13 src/person/person.cpp
-badd +21 src/person/adopter.h
-badd +28 src/person/adopter.cpp
-badd +13 src/person/employee.cpp
-badd +19 src/person/employee.h
-badd +24 src/person/admin.h
-badd +38 src/person/admin.cpp
+badd +1 src/animal.cpp
+badd +1 src/animal.h
+badd +1 src/main.cpp
+badd +1 src/shelter.cpp
+badd +22 src/shelter.h
+badd +11 src/inventory/inventory.h
+badd +1 src/inventory/inventory.cpp
+badd +1 src/inventory/inventory_item.h
+badd +1 src/person/admin.cpp
+badd +3 src/inventory/inventory_item.cpp
+badd +0 src/person/admin.h
+badd +0 src/person/adopter.h
+badd +0 src/person/person.cpp
+badd +0 src/person/person.h
+badd +1 src/person/employee.h
+badd +0 src/person/adopter.cpp
+badd +0 src/person/employee.cpp
 argglobal
 %argdel
+$argadd src/animal.cpp
+$argadd src/animal.h
+$argadd src/inventory/
 $argadd src/main.cpp
+$argadd src/person/
+$argadd src/shelter.cpp
+$argadd src/shelter.h
 set stal=2
-tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
@@ -45,6 +50,8 @@ tabnew +setlocal\ bufhidden=wipe
 tabrewind
 edit src/main.cpp
 argglobal
+4argu
+balt src/animal.cpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -55,93 +62,20 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 42 - ((19 * winheight(0) + 17) / 34)
+let s:l = 1 - ((0 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 42
-normal! 014|
-tabnext
-edit src/shelter.h
-argglobal
-balt src/main.cpp
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 25 - ((19 * winheight(0) + 17) / 34)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 25
-normal! 039|
-tabnext
-edit src/shelter.cpp
-argglobal
-balt src/shelter.h
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 28 - ((27 * winheight(0) + 17) / 34)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 28
-normal! 034|
-tabnext
-edit src/animal.h
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 18 - ((17 * winheight(0) + 17) / 34)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 18
-normal! 022|
-tabnext
-edit src/animal.cpp
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 21 - ((20 * winheight(0) + 17) / 34)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 21
-normal! 018|
+keepjumps 1
+normal! 0
 tabnext
 edit src/person/person.h
 argglobal
+6argu
+if bufexists(fnamemodify("src/person/person.h", ":p")) | buffer src/person/person.h | else | edit src/person/person.h | endif
+if &buftype ==# 'terminal'
+  silent file src/person/person.h
+endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -157,107 +91,14 @@ if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 17
-normal! 028|
-tabnext
-edit src/person/person.cpp
-argglobal
-balt src/person/person.h
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 12 - ((11 * winheight(0) + 17) / 34)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 12
-normal! 0
-tabnext
-edit src/person/employee.h
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 20 - ((19 * winheight(0) + 17) / 34)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 20
-normal! 02|
-tabnext
-edit src/person/employee.cpp
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 13 - ((12 * winheight(0) + 17) / 34)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 13
-normal! 025|
-tabnext
-edit src/person/admin.h
-argglobal
-balt src/person/employee.cpp
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 22 - ((21 * winheight(0) + 17) / 34)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 22
-normal! 029|
-tabnext
-edit src/person/admin.cpp
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 47 - ((33 * winheight(0) + 17) / 34)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 47
 normal! 0
 tabnext
 edit src/person/adopter.h
 argglobal
+if bufexists(fnamemodify("src/person/adopter.h", ":p")) | buffer src/person/adopter.h | else | edit src/person/adopter.h | endif
+if &buftype ==# 'terminal'
+  silent file src/person/adopter.h
+endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -273,10 +114,15 @@ if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 19
-normal! 023|
+normal! 05|
 tabnext
 edit src/person/adopter.cpp
 argglobal
+if bufexists(fnamemodify("src/person/adopter.cpp", ":p")) | buffer src/person/adopter.cpp | else | edit src/person/adopter.cpp | endif
+if &buftype ==# 'terminal'
+  silent file src/person/adopter.cpp
+endif
+balt src/animal.cpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -287,13 +133,106 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 6 - ((5 * winheight(0) + 17) / 34)
+let s:l = 1 - ((0 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 6
-normal! 04|
-tabnext 1
+keepjumps 1
+normal! 0
+tabnext
+edit src/person/employee.h
+argglobal
+if bufexists(fnamemodify("src/person/employee.h", ":p")) | buffer src/person/employee.h | else | edit src/person/employee.h | endif
+if &buftype ==# 'terminal'
+  silent file src/person/employee.h
+endif
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 17) / 34)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+tabnext
+edit src/person/employee.cpp
+argglobal
+if bufexists(fnamemodify("src/person/employee.cpp", ":p")) | buffer src/person/employee.cpp | else | edit src/person/employee.cpp | endif
+if &buftype ==# 'terminal'
+  silent file src/person/employee.cpp
+endif
+balt src/person/employee.h
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 17) / 34)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+tabnext
+edit src/person/admin.h
+argglobal
+if bufexists(fnamemodify("src/person/admin.h", ":p")) | buffer src/person/admin.h | else | edit src/person/admin.h | endif
+if &buftype ==# 'terminal'
+  silent file src/person/admin.h
+endif
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 17) / 34)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+tabnext
+edit src/person/admin.cpp
+argglobal
+if bufexists(fnamemodify("src/person/admin.cpp", ":p")) | buffer src/person/admin.cpp | else | edit src/person/admin.cpp | endif
+if &buftype ==# 'terminal'
+  silent file src/person/admin.cpp
+endif
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 17) / 34)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+tabnext 3
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

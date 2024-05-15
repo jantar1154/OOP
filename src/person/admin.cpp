@@ -8,6 +8,14 @@ Admin::Admin(string name, uint8_t age, size_t employee_id, Shelter *shelter)
 }
 Admin::~Admin() {}
 
+string Admin::get_name() const {
+    return this->name;
+}
+
+uint8_t Admin::get_age() const {
+    return this->age;
+}
+
 size_t Admin::get_employee_id() const {
     return this->employee_id;
 }

@@ -7,17 +7,17 @@
 using std::string;
 
 class Person {
-private:
+protected:
+    Person(string name, uint8_t age);
     string name;
     uint8_t age;
 
 public:
-    Person(string name, uint8_t age);
+    virtual ~Person() = default;
+    virtual string get_name() const = 0;
+    virtual uint8_t get_age() const = 0;
 
-    virtual string get_name() const;
-    virtual uint8_t get_age() const;
-
-    virtual string to_string() const;
+    virtual string to_string() const = 0;
 };
 
 #endif // H_PERSON

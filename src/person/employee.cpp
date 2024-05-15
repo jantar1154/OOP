@@ -8,6 +8,14 @@ Employee::Employee(string name, uint8_t age, size_t employee_id)
 
 Employee::~Employee() {}
 
+string Employee::get_name() const {
+    return this->name;
+}
+
+uint8_t Employee::get_age() const {
+    return this->age;
+}
+
 size_t Employee::get_employee_id() const {
     return this->employee_id;
 }

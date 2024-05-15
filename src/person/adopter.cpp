@@ -1,9 +1,8 @@
 #include "adopter.h"
 #include <sstream>
 
-Adopter::Adopter(string name, uint8_t age)
-: Person(name, age) {
-    
+Adopter::Adopter(string name, uint8_t age) 
+:Person(name, age) {
 }
 
 Adopter::~Adopter() {
@@ -11,6 +10,14 @@ Adopter::~Adopter() {
     for (Animal *i : this->adopted_animals) {
         delete i;
     }
+}
+
+string Adopter::get_name() const {
+    return this->name;
+}
+
+uint8_t Adopter::get_age() const {
+    return this->age;
 }
 
 const vector<Animal*> Adopter::get_adopted_animals() const {

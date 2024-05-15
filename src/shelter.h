@@ -6,7 +6,7 @@
 #include "person/adopter.h"
 #include "person/employee.h"
 #include "person/admin.h"
-#include "inventory_item.h"
+#include "inventory/inventory.h"
 
 class Admin;
 
@@ -19,7 +19,7 @@ private:
     vector<Animal*> animals;
     vector<Employee*> employees;
     vector<Admin*> admins;
-    vector<InventoryItem*> inventory;
+    Inventory* inventory;
 
     void adopt_animal(Adopter *adopter, Animal *animal);
 
@@ -40,8 +40,8 @@ public:
     const vector<Employee*> get_employees() const;
 
     InventoryItem* add_to_inventory(InventoryItem* item);
-    InventoryItem* add_to_inventory(string name, float price);
-    const vector<InventoryItem*> get_inventory() const;
+    InventoryItem* add_to_inventory(string name, float price, int amount);
+    const Inventory* get_inventory() const;
 };
 
 #endif //H_SHELTER

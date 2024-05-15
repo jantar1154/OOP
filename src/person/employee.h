@@ -15,14 +15,18 @@ private:
 
 public:
     Employee(string name, uint8_t age, size_t employee_id);
-    virtual ~Employee();
+    ~Employee();
+    
+    string get_name() const override;
+    uint8_t get_age() const override;
+
     size_t get_employee_id() const;
 
     void add_animal(Animal* animal);
 
     const vector<Animal*> get_animals() const;
 
-    string to_string() const;
+    string to_string() const override;
 };
 
 #endif // H_EMPLOYEE

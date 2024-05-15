@@ -1,8 +1,16 @@
-#include <iostream>
 #include "shelter.h"
+#include <iostream>
+#include <sstream>
+#include <random>
 
 using std::cout;
 using std::endl;
+
+int rng(int min, int max) {
+    std::random_device rd;
+    std::discrete_distribution<int> dist(min, max);
+    return dist(rd);
+}
 
 int main() {
     Shelter *sh01 = new Shelter("Utulek super 3000+");
@@ -22,12 +30,20 @@ int main() {
     cout << endl;
 
     // Add inventory items
-    sh01->add_to_inventory("Kocici granule 10kg", 400);
-    sh01->add_to_inventory("Hracky pro psy", 9999);
+    for (size_t i = 0; i < 100; ++i) {
+        std::stringstream ss;
+        ss << "Item " << i;
+        const string name = ss.str();
+        const float price = rng(10, 20000);
+        const int amount = rng(1, 1000);
+        sh01->add_to_inventory(name, price, amount);
+    }
+    sh01->add_to_inventory("Kocici granule 10kg", 400, 10);
+    sh01->add_to_inventory("Hracky pro psy", 30, 25);
 
     // Print inventory
     cout << "INVENTORY:\n";
-    for (InventoryItem *const i : sh01->get_inventory())
+    for (InventoryItem *const i : sh01->get_inventory()->get_items())
         cout << i->to_string() << endl;
     cout << endl;
 

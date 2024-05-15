@@ -8,10 +8,11 @@ using std::string;
 class InventoryItem {
 private:
     string name;
+    int amount;
     float price;
 
 public:
-    InventoryItem(string name, float price);
+    InventoryItem(string name, float price, int amount);
     string get_name() const;
     float get_price() const;
     string to_string() const;
