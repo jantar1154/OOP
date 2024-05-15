@@ -22,7 +22,7 @@ public:
 
     size_t get_employee_id() const;
 
-    void add_animal(Animal* animal);
+    int add_animal(Animal* animal);
 
     const vector<Animal*> get_animals() const;
 

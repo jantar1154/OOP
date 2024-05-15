@@ -25,7 +25,7 @@ public:
     Animal *add_animal(string name, uint8_t age);
 
     size_t get_employee_id() const;
-    void adopt_animal(Animal *animal, Adopter *adopter);
+    int adopt_animal(Animal *animal, Adopter *adopter);
 
     string to_string() const override;
 };

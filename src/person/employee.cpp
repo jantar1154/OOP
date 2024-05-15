@@ -20,8 +20,9 @@ size_t Employee::get_employee_id() const {
     return this->employee_id;
 }
 
-void Employee::add_animal(Animal *animal) {
+int Employee::add_animal(Animal *animal) {
     this->animals.push_back(animal);
+    return 0;
 }
 
 const vector<Animal*> Employee::get_animals() const {

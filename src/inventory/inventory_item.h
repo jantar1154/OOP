@@ -15,6 +15,8 @@ public:
     InventoryItem(string name, float price, int amount);
     string get_name() const;
     float get_price() const;
+    float get_total_price() const;
+    int get_amount() const;
     string to_string() const;
 };
 

@@ -6,10 +6,11 @@
 using std::cout;
 using std::endl;
 
-int rng(int min, int max) {
+int random_int(int min, int max) {
     std::random_device rd;
-    std::discrete_distribution<int> dist(min, max);
-    return dist(rd);
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dist(min, max);
+    return dist(gen);
 }
 
 int main() {
@@ -20,12 +21,12 @@ int main() {
     cout << endl;
 
     // Print admins
-    for (Admin *const i : sh01->get_admins())
+    for (const Person *const i : sh01->get_admins())
         cout << i->to_string() << endl;
     cout << endl;
 
     // Print employees
-    for (Employee *const i : sh01->get_employees())
+    for (const Person *const i : sh01->get_employees())
         cout << i->to_string() << endl;
     cout << endl;
 
@@ -34,8 +35,8 @@ int main() {
         std::stringstream ss;
         ss << "Item " << i;
         const string name = ss.str();
-        const float price = rng(10, 20000);
-        const int amount = rng(1, 1000);
+        const float price = random_int(10, 200);
+        const int amount = random_int(10, 100);
         sh01->add_to_inventory(name, price, amount);
     }
     sh01->add_to_inventory("Kocici granule 10kg", 400, 10);
@@ -43,7 +44,7 @@ int main() {
 
     // Print inventory
     cout << "INVENTORY:\n";
-    for (InventoryItem *const i : sh01->get_inventory()->get_items())
+    for (const InventoryItem *const i : sh01->get_inventory()->get_items())
         cout << i->to_string() << endl;
     cout << endl;
 

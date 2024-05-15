@@ -23,13 +23,14 @@ Animal *Shelter::add_animal(string name, uint8_t age) {
     return animal;
 }
 
-void Shelter::remove_animal(Animal *animal) {
+int Shelter::remove_animal(Animal *animal) {
     for (size_t i = 0; i < this->animals.size(); ++i) {
         const Animal *a = this->animals.at(i);
         if (a != animal) continue;
         this->animals.erase(this->animals.begin() + i);
-        return;
+        return 0;
     }
+    return 1;
 }
 
 vector<Animal*> Shelter::get_animals() {

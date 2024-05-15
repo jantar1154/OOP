@@ -11,7 +11,7 @@ class Adopter : public Person {
 private:
     friend class Admin;
     vector<Animal*> adopted_animals;
-    void adopt_animal(Animal *animal);
+    int adopt_animal(Animal *animal);
 
 public:
     Adopter(string name, uint8_t age);

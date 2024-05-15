@@ -41,9 +41,10 @@ Animal *Admin::add_animal(string name, uint8_t age) {
     return animal;
 }
 
-void Admin::adopt_animal(Animal *animal, Adopter *adopter) {
-    adopter->adopt_animal(animal);
-    this->shelter->remove_animal(animal);
+int Admin::adopt_animal(Animal *animal, Adopter *adopter) {
+    if (0 != adopter->adopt_animal(animal)) return 1;
+    if (0 != this->shelter->remove_animal(animal)) return 1;
+    return 0;
 }
 
 string Admin::to_string() const {

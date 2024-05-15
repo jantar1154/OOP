@@ -21,12 +21,12 @@ private:
     vector<Admin*> admins;
     Inventory* inventory;
 
-    void adopt_animal(Adopter *adopter, Animal *animal);
+    int adopt_animal(Adopter *adopter, Animal *animal);
 
     Animal *add_animal(Animal *const animal);
     Animal *add_animal(string name, uint8_t age);
 
-    void remove_animal(Animal *animal);
+    int remove_animal(Animal *animal);
 
 public:
     Shelter(string name);
